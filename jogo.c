@@ -222,7 +222,7 @@ jogo(){
 
 
 config(comando){
-
+system("cls");
 	// Titulo
 	printf("\n");
 	linhah("Jogo da Forca",'-');
@@ -268,7 +268,7 @@ config(comando){
 }
 
 scoreboard(){
-
+system("cls");
 	// Titulo
 	printf("\n");
 	linhah("Jogo da Forca",'-');
@@ -302,43 +302,34 @@ scoreboard(){
 	mainmenu();
 
 }
-mainmenu(comando) {
+main(comando)
+{
 
-	//titulo
+    //titulo
 
-	linhah("Jogo da Forca",'-');
-	puts("\t\t\tJogo da Forca");
-	linhah("Jogo da Forca",'-');
-	//
+    linhah("Jogo da Forca",'-');
+    puts("\t\t\tJogo da Forca");
+    linhah("Jogo da Forca",'-');
+    //
 
-	// menu
-	printf("\n\n\n\n\n");
-	puts("\t\t\t1 - Jogar\n");
-	puts("\t\t\t2 - Configuracoes\n");
-	puts("\t\t\t3 - Scoreboard\n");
-	puts("\t\t\t4 - Sair");
-	printf("\n\n\n\n\n\n\n");
-	//
+    // menu
+    printf("\n\n\n\n\n");
+    puts("\t\t\t1 - Jogar\n");
+    puts("\t\t\t2 - Configuracoes\n");
+    puts("\t\t\t3 - Scoreboard\n");
+    puts("\t\t\t4 - Sair");
+    printf("\n\n\n\n\n\n\n");
+    //
 
-	// escolhas
-	printf("Digite o comando: ");
-	comando = getche();
-	if (comando == '1'){
-		jogo();
-	}
-	else if(comando == '2'){
-		config();
-	}
-	else if(comando == '3'){
-		scoreboard();
-	}
-	else if(comando == '4'){
-		return 0;
-	}
-	else{
-		printf("\n\t\t\tComando Invalido.\n");
-		return 0;
-	}
+    // escolhas
+    printf("Digite o comando: ");
+    comando = getche();
+    switch(comando){
+    case '1': system("cls"); jogo(); break;
+    case '2': system("cls"); config(); break;
+    case '3': system("cls"); scoreboard(); break;
+    case '4': return 0;
+    default : system("cls"); printf("\n\t\t\tComando Invalido.\n"); return 0;}
 }
 
 
