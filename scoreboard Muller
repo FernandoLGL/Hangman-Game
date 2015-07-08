@@ -1,0 +1,20 @@
+
+
+void addScoreboard(Acertos){
+
+    FILE *scoreboardFile = fopen("scoreboard.txt", "a");
+    char nome[20];
+    Jogador1 jogador;
+
+    jogador.pontos = Acertos;
+
+    printf("\n\nGive nome: ");
+    scanf("%s", nome);
+    strcpy(jogador.nome, nome);
+
+    fprintf(scoreboardFile, "Nome: %s \n\nPontos: %d\n\n\n", jogador.nome, jogador.pontos);
+    fclose(scoreboardFile);
+
+}
+
+// pegar o codigo e colocar no jogo, pra funcionar o sistema de score, Müller
