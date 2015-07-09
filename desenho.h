@@ -1,4 +1,9 @@
+#ifndef DESENHO_H
+    #define DESENHO_H
+
 #include <stdio.h>
+#include <stdlib.h>
+
 char A[20][20];
 int i,j;
 void inicio(void)
@@ -136,3 +141,6 @@ void pernae(void)
     }
 }
 
+
+
+#endif
