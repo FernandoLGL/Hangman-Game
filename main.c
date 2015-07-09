@@ -1,8 +1,4 @@
-#ifndef FUNCOESJF_H
-#define FUNCOESJF_H
-
-
-#include "leaderboard.h"
+#include "scoreboard.h"
 #include "config.h"
 #include "desenho.h"
 #include <stdio.h>
@@ -249,8 +245,3 @@ main(comando)
     case '4': return 0;
     default : system("cls"); printf("\n\t\t\tComando Invalido.\n"); return 0;}
 }
-
-
-
-
-#endif
