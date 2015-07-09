@@ -140,8 +140,9 @@ jogo(){
 	  			puts("\n\n\t\t\tParabens!! Voce venceu!! Digite qualquer tecla para continuar. \n");
 
 	  			score = tpalavra * 3;
-
+	  			addscore(score);
 	  			getch();
+	  			main();
 
 	  			//score();
 
@@ -209,8 +210,10 @@ jogo(){
 
 
     }
-
+    score = tpalavra * 2;
+    addscore(score);
     puts("\n\n\t\t\tParabens! Voce venceu!\n");
+    main();
 
 }
 
@@ -218,7 +221,7 @@ jogo(){
 
 main(comando)
 {
-
+system("cls");
     //titulo
 
     linhah("Jogo da Forca",'-');
