@@ -1,4 +1,12 @@
+
+#ifndef CONFIG_H
+    #define CONFIG_H
+
+#include "temasconfig.h"
 #include <stdio.h>
+#include <stdlib.h>
+
+
 config(comando)
 {
 system("cls");
@@ -16,10 +24,13 @@ system("cls");
 
     // menu
     printf("\n\n\n");
-    puts("\t\t\t1 - Opcao1\n");
-    puts("\t\t\t2 - Opcao2\n");
-    puts("\t\t\t3 - Opcao3\n");
-    puts("\t\t\t4 - Retornar ao menu");
+    puts("\t\t\t1 - Plano de Fundo Preto >\n");
+    puts("\t\t\t2 - Plano de Fundo Azul > \n");
+    puts("\t\t\t3 - Plano de Fundo Verde >\n");
+    puts("\t\t\t4 - Plano de Fundo Vermelho >\n");
+    puts("\t\t\t5 - Plano de Fundo Branco > \n");
+    puts("\t\t\t6 - Retornar para o menu.\n");
+
     //
 
     //escolha
@@ -27,10 +38,15 @@ system("cls");
     printf("Digite o comando: ");
     comando = getche();
     switch(comando){
-    case '1': system("cls"); jogo(); break;
-    case '2': system("cls"); config(); break;
-    case '3': system("cls"); scoreboard(); break;
-    case '4': return 0;
-    default : system("cls"); printf("\n\t\t\tComando Invalido.\n"); return 0;}
+        case '1': pp(comando); break;
+        case '2': pa(comando); break;
+        case '3': pvd(comando); break;
+        case '4': pvm(comando); break;
+        case '5': pb(comando); break;
+        case '6': main(); break;
+        default: printf("\nComando Invalido.\n Digite qualquer tecla para retornar ao menu."); getch(); main();
+    }
+    
 }
 
+#endif
