@@ -1,4 +1,10 @@
+#ifndef SCOREBOARD_H
+    #define SCOREBOARD_H
+
+
 #include <stdio.h>
+#include <stdlib.h>
+
 scoreboard()
 {
 system("cls");
@@ -15,18 +21,18 @@ system("cls");
     linhah("Scoreboard",'-');
 
     // menu
-    char lugar[0][10];
-    printf("\n\n\n");
-    printf("\t\t\t1 - %s\n", lugar[0]);
-    printf("\t\t\t2 - %s\n", lugar[1]);
-    printf("\t\t\t3 - %s\n", lugar[2]);
-    printf("\t\t\t4 - %s\n", lugar[3]);
-    printf("\t\t\t5 - %s\n", lugar[4]);					// <<<< VER DEPOIS COMO FAZER
-    printf("\t\t\t6 - %s\n", lugar[5]);
-    printf("\t\t\t7 - %s\n", lugar[6]);
-    printf("\t\t\t8 - %s\n", lugar[7]);
-    printf("\t\t\t9 - %s\n", lugar[8]);
-    printf("\t\t\t10 - %s\n", lugar[9]);
+    char linha [50];
+    FILE * fptr;
+    fptr = fopen("scoreboard.txt", "r");
+   
+
+    while(!feof(fptr)){
+        fgets(linha, 50, fptr);
+        printf("%s", linha);
+    }
+
+    fclose(fptr);
+  
     //
 
     printf("\n\n\n\n");
@@ -48,13 +54,16 @@ void addscore(int pontos){
 
     jogador.pontos = pontos;
 
-    printf("\n\nGive nome: ");
+    printf("\n\nDiga seu nome: ");
     scanf("%s",&jogador.nome);
 
-    fprintf(scoreboardFile, "Nome: %s \tPontos: %d\n", jogador.nome, jogador.pontos);
+    printf("Parabens, %s, voce fez %d pontos!\n\nDigite qualquer tecla para sair.", jogador.nome, jogador.pontos);
+    getch();
+
+    fprintf(scoreboardFile, "%s : %d Pontos.\n", jogador.nome, jogador.pontos);
     fclose(scoreboardFile);
 
 }
-//Assim esta funcionando, ao ganhar ele pede o nome do jogador.
-//Mas nao sei como fazer para ler o arquivo e mostrar o top 10
-//Tambem nao sei como fazer pra colocar em ordem
+
+
+#endif
