@@ -51,7 +51,10 @@ void addscore(int pontos){
     printf("\n\nGive nome: ");
     scanf("%s",&jogador.nome);
 
-    fprintf(scoreboardFile, "Nome: %s \n\nPontos: %d\n\n\n", jogador.nome, jogador.pontos);
+    fprintf(scoreboardFile, "Nome: %s \tPontos: %d\n", jogador.nome, jogador.pontos);
     fclose(scoreboardFile);
+
 }
-//Assim esta funcionando, ao ganhar ele pede o nome do jogador
+//Assim esta funcionando, ao ganhar ele pede o nome do jogador.
+//Mas nao sei como fazer para ler o arquivo e mostrar o top 10
+//Tambem nao sei como fazer pra colocar em ordem
