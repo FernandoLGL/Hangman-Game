@@ -53,5 +53,4 @@ void addscore(int pontos){
 
     fprintf(scoreboardFile, "Nome: %s \n\nPontos: %d\n\n\n", jogador.nome, jogador.pontos);
     fclose(scoreboardFile);
-
 }
