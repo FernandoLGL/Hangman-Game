@@ -54,3 +54,4 @@ void addscore(int pontos){
     fprintf(scoreboardFile, "Nome: %s \n\nPontos: %d\n\n\n", jogador.nome, jogador.pontos);
     fclose(scoreboardFile);
 }
+//Assim esta funcionando, ao ganhar ele pede o nome do jogador
