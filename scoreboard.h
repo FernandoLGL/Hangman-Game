@@ -35,3 +35,23 @@ system("cls");
     main();
 
 }
+void addscore(int pontos){
+
+    FILE *scoreboardFile = fopen("scoreboard.txt", "a");
+
+    struct scoreboard
+    {
+        char nome[20];
+        int pontos;
+    }jogador;
+
+
+    jogador.pontos = pontos;
+
+    printf("\n\nGive nome: ");
+    scanf("%s",&jogador.nome);
+
+    fprintf(scoreboardFile, "Nome: %s \n\nPontos: %d\n\n\n", jogador.nome, jogador.pontos);
+    fclose(scoreboardFile);
+
+}
