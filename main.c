@@ -9,11 +9,10 @@
 int sorte,score,vidas,tpalavra;
 char continuar;
 char iuser[11];
-int acertos,vacertos, fix;
+int acertos,vacertos;
 score = 0;
 vidas = 6;
 acertos = 0;
-
 linhah(n,x)
 {
     int i;
@@ -52,14 +51,14 @@ char dica[][20]=
 
 jogo(){
 
-	char arriscar[11];
+  char arriscar[11];
 
-	srand(time(0));
+  srand(time(0));
 
-	sorte = rand() % 6; // 6 = numero de palavras
+  sorte = rand() % 6; // 6 = numero de palavras
 
 
-	tpalavra = strlen(palavra[sorte]);
+  tpalavra = strlen(palavra[sorte]);
 
 
     char palavradavez[11] = { 0,0,0,0,0,0,0,0,0,0,0 };
@@ -70,150 +69,148 @@ jogo(){
 
 
 
-    	if(vidas == 6){
-    		system("cls");
-    		inicio();
-    	}
+      if(vidas == 6){
+        system("cls");
+        inicio();
+      }
 
-		if (vidas == 5){
-			system("cls");
-	  		cabeca();
-  		}
-  		else if ( vidas == 4){
-  			system("cls");
-	  		corpo();
-  		}
-  		else if (vidas == 3){
-  			system("cls");
-	  		bracoe();
-  		}
-  		else if (vidas == 2){
-  			system("cls");
-	  		bracod();
-  		}
-  		else if ( vidas == 1 ){
-  			system("cls");
-	  		pernae();
-  		}
-  		else if ( vidas == 0 ){
-  			system("cls");
-  			pernad();
-  			puts("\n\n\t\t\t Voce Perdeu!!!");
-  			return 0;
-  		}
-
-
-    	printf("\t\t\t");
-
-    	for(i=0; i < tpalavra; i++){
+    if (vidas == 5){
+      system("cls");
+        cabeca();
+      }
+      else if ( vidas == 4){
+        system("cls");
+        corpo();
+      }
+      else if (vidas == 3){
+        system("cls");
+        bracoe();
+      }
+      else if (vidas == 2){
+        system("cls");
+        bracod();
+      }
+      else if ( vidas == 1 ){
+        system("cls");
+        pernae();
+      }
+      else if ( vidas == 0 ){
+        system("cls");
+        pernad();
+        puts("\n\n\t\t\t Voce Perdeu!!!");
+        return 0;
+      }
 
 
-	  		if(palavradavez[i] == 1){
+      printf("\t\t\t");
 
-	  			printf("%c", palavra[sorte][i]);
-	  			putchar(' ');
-
-	  		} else {
-	  			putchar('_');
-	  			putchar(' ');
-
-	  		}
-	  	}
-
-	  	printf("\n");
-
-    	printf("\n\n\t\tDica: %s\n\n", dica[sorte]);
-    	printf("\t\tA palavra possui %d letras\n\n",tpalavra);
-    	puts("Se quiser arriscar a palavra inteira, digite 'arriscar'\n Se quiser sair, digite 'sair'\n\n");
-	    puts("Digite uma letra:");
-
-	    fgets(iuser, 11, stdin );
-
-	  	if(strncmp(iuser, "arriscar", 8) == 0 ){
-
-	  		puts("Digite a palavra:\n");
-
-	  		fgets(arriscar, 11, stdin);
-
-	  		if(strcmp(arriscar, palavra[sorte]) == 0){
-
-	  			puts("\n\n\t\t\tParabens!! Voce venceu!! Digite qualquer tecla para continuar. \n");
-
-	  			score = tpalavra * 3;
-	  			addscore(score);
-	  			getch();
-	  			main();
-
-	  			//score();
+      for(i=0; i < tpalavra; i++){
 
 
-	  		}
+        if(palavradavez[i] == 1){
 
-	  		else {
+          printf("%c", palavra[sorte][i]);
+          putchar(' ');
 
-	  			puts("Voce perdeu.");
+        } else {
+          putchar('_');
+          putchar(' ');
 
-	  			score = 0;
+        }
+      }
 
-	  			return 0;
-	  		}
+      printf("\n");
 
-	  	}
+      printf("\n\n\t\tDica: %s\n\n", dica[sorte]);
+      printf("\t\tA palavra possui %d letras\n\n",tpalavra);
+      puts("Se quiser arriscar a palavra inteira, digite 'arriscar'\n Se quiser sair, digite 'sair'\n\n");
+      puts("Digite uma letra:");
 
-	  	while(strncmp(iuser, "sair", 4) == 0){
+      fgets(iuser, 11, stdin );
 
-	  		puts("Sair no meio da partida ocasionara na perda de seus pontos. Continuar?(Y/N)\n");
-	  		continuar = getch();
+      strlwr(iuser);
 
-	  		switch(tolower(continuar)){
-	  			case 'y':
-	  				return 0;
-	  			case 'n':
-	  				break;
-	  		}
-	  		break;
-	  	}
+      if(strncmp(iuser, "arriscar", 8) == 0 ){
 
+        puts("Digite a palavra:\n");
 
-	  	vacertos = acertos;
+        fgets(arriscar, 11, stdin);
 
-	  	for(i=0; i < tpalavra; i++){
+        if(strcmp(arriscar, palavra[sorte]) == 0){
 
-	  			// se o caractere já foi transformado pra 1, então ele já foi reconhecido antes
-	  		if(palavradavez[i] == 1){
-	  			fix = 0;
-	  				 // tentativa de fix 2 certas seguidas = erro
-	  			continue;
-	  		}
+          puts("\tVoce venceu!");
 
-	  			// iuser[0] primeira letra do que o usuario digitar
+          score = tpalavra * 3;
 
-	  		if(iuser[0] == palavra[sorte][i]){
-	  			palavradavez[i] = 1;
-	  			acertos = acertos + 1;
-	  				//usuario acertou
+          getch();
 
-	  		}
-
-	  		else {
-	  			fix = 1;
-	  		}
+          addscore(score);
+          main();
 
 
-	  	}
-	  		// o numero de acertos não mudou, então o usuário errou.
-	  	if ((vacertos == acertos) && (fix == 1)) {
+        }
 
-	  			vidas = vidas - 1; // usuario errou
+        else {
 
-		  	}
+          puts("Voce perdeu.");
 
+          score = 0;
+
+          return 0;
+        }
+
+      }
+
+      while(strncmp(iuser, "sair", 4) == 0){
+
+        puts("Sair no meio da partida ocasionara na perda de seus pontos. Continuar?(Y/N)\n");
+        continuar = getch();
+
+        switch(tolower(continuar)){
+          case 'y':
+            return 0;
+          case 'n':
+            break;
+        }
+        break;
+      }
+
+
+      vacertos = acertos;
+
+      for(i=0; i < tpalavra; i++){
+
+          // se o caractere já foi transformado pra 1, então ele já foi reconhecido antes
+        if(palavradavez[i] == 1){
+          continue;
+        }
+
+          // iuser[0] primeira letra do que o usuario digitar
+
+        if(iuser[0] == tolower(palavra[sorte][i])){
+          palavradavez[i] = 1;
+          acertos = acertos + 1;
+          score += 3;
+            //usuario acertou
+
+        }
+
+      }
+
+        // o numero de acertos não mudou, então o usuário errou.
+        if (vacertos == acertos)  {
+            score = score - 1;
+            vidas = vidas - 1; // usuario errou
+
+        }
 
     }
-    score = tpalavra * 2;
+
+    score = score + (tpalavra * 2);
+    puts("\n\n\tParabens! Voce venceu! Digite qualquer tecla para continuar.\n");
+    getch();
     addscore(score);
-    puts("\n\n\t\t\tParabens! Voce venceu!\n");
-    main();
+    return 0;
 
 }
 
@@ -246,5 +243,6 @@ system("cls");
     case '2': system("cls"); config(); break;
     case '3': system("cls"); scoreboard(); break;
     case '4': return 0;
-    default : system("cls"); printf("\n\t\t\tComando Invalido.\n"); return 0;}
+    default : system("cls"); printf("\n\t\t\tComando Invalido. \n\n\t\tDigite qualquer tecla para sair.\n"); getch(); return 0;
+  }
 }
