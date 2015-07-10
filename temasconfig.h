@@ -1,4 +1,3 @@
-
 #ifndef TEMASCONFIG_H
     #define TEMASCONFIG_H
 
