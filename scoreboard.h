@@ -22,9 +22,10 @@ system("cls");
 
     // menu
     char linha [50];
+    
     FILE * fptr;
     fptr = fopen("scoreboard.txt", "r");
-   
+
 
     while(!feof(fptr)){
         fgets(linha, 50, fptr);
@@ -32,7 +33,7 @@ system("cls");
     }
 
     fclose(fptr);
-  
+
     //
 
     printf("\n\n\n\n");
@@ -47,7 +48,7 @@ void addscore(int pontos){
 
     struct scoreboard
     {
-        char nome[20];
+        char nome[50];
         int pontos;
     }jogador;
 
@@ -57,10 +58,10 @@ void addscore(int pontos){
     printf("\n\nDiga seu nome: ");
     scanf("%s",&jogador.nome);
 
-    printf("Parabens, %s, voce fez %d pontos!\n\nDigite qualquer tecla para sair.", jogador.nome, jogador.pontos);
+    printf("\n\n\n\t\tParabens, %s, voce fez %d pontos!\n\n\n\n\n\nDigite qualquer tecla para sair.", jogador.nome, jogador.pontos);
     getch();
 
-    fprintf(scoreboardFile, "%s : %d Pontos.\n", jogador.nome, jogador.pontos);
+    fprintf(scoreboardFile, "\t\t%s : %d Pontos.\n", jogador.nome, jogador.pontos);
     fclose(scoreboardFile);
 
 }
