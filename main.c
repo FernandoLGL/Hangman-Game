@@ -98,6 +98,7 @@ jogo(){
         system("cls");
         pernad();
         puts("\n\n\t\t\t Voce Perdeu!!!");
+        getch();
         return 0;
       }
 
@@ -123,7 +124,7 @@ jogo(){
 
       printf("\n\n\t\tDica: %s\n\n", dica[sorte]);
       printf("\t\tA palavra possui %d letras\n\n",tpalavra);
-      puts("Se quiser arriscar a palavra inteira, digite 'arriscar'\n Se quiser sair, digite 'sair'\n\n");
+      puts("Se quiser arriscar a palavra inteira, digite 'arriscar'\nSe quiser sair, digite 'sair'\n\n");
       puts("Digite uma letra:");
 
       fgets(iuser, 11, stdin );
@@ -132,19 +133,28 @@ jogo(){
 
       if(strncmp(iuser, "arriscar", 8) == 0 ){
 
-        puts("Digite a palavra:\n");
+        puts("\nDigite a palavra:");
 
         fgets(arriscar, 11, stdin);
 
-        if(strcmp(arriscar, palavra[sorte]) == 0){
+        char * parriscar;
 
-          puts("\tVoce venceu!");
+        char * ppalavra;
 
-          score = tpalavra * 3;
+        parriscar = strlwr(arriscar);
+
+        ppalavra = strlwr(palavra[sorte]);
+
+        if(strncmp(parriscar, ppalavra, tpalavra) == 0){
+
+          puts("\t\nVoce venceu! Digite qualquer tecla para continuar.");
+
+          score = (tpalavra * 3) - (6 - vidas);
 
           getch();
 
           addscore(score);
+          return 0;
           main();
 
 
@@ -152,7 +162,9 @@ jogo(){
 
         else {
 
-          puts("Voce perdeu.");
+          puts("\n\n\t\t\t Voce Perdeu!!!");
+          
+          getch();
 
           score = 0;
 
